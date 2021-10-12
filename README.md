@@ -1,53 +1,89 @@
 # Template Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Classification
+- **Identifier:** <https://stac-extensions.github.io/classification/v1.0.0/schema.json>
+- **Field Name Prefix:** classification
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @drwelby @mmohr
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+
+Classification stores metadata that clarifies the values within a dataset. Common uses would be:
+
+- Describing classes of data, and the values belonging to the class
+- The reverse of the above, as a lookup table mapping values to classes
+
 
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
+  - [Asset example](examples/item.json): Shows the basic usage of the extension in a STAC Item
   - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Asset Properties 
+
+For single-band rasters
+
+## Raster Band (Raster Extension)
+
+For multiband rasters
+
+## Table Column (Table Extension)
+
+For tabular or vector datasets
+
+## Collection Fields
+
+In `summaries` field
+
+
+_naming the field "classes" seems more descriptive but ??_
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
+| classification:classes   | [Class object]        | **REQUIRED**. Classes in the dataset |
 
-### Additional Field Information
 
-#### template:new_field
+_Current fields from file:values_
+### Class Object
+| Field Name           | Type                      | Description |
+| -------------------- | ------------------------- | ----------- |
+| values  | [Any] | **REQUIRED** Values in the class |
+| summary | string                | REQUIRED. A short description of the value(s). |
 
-This is a much more detailed description of the field `template:new_field`...
 
-### XYZ Object
+_"values" is shown as a list of any object. I think that could include Range objects for continuous data_
 
-This is the introduction for the purpose and the content of the XYZ Object...
+_@mmohr picked "summary" as distinctive from the "description" field commonly used elsewhere with the expectation that CommonMark would not be used and these descriptions would be short in nature_
 
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
+_"Summaries" are mentioned elsewhere in the STAC spec (https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md#summaries) to summarize data statistically so maybe "description" is OK_
 
-## Relation types
 
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+### _Common fields used elsewhere_
 
-| Type                | Description |
-| ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+| Field Name           | Type                      | Description |
+| name   | string                    | Name of the class |
+| description | string                | Description of class |
+| title | string | Like "name" but formatted for display|
+
+_"Description" vs "Summary" is addressed above_
+
+_"name" could be useful as a field to identify a class. If classes are mapped to names ((instead of a list)) it would make classes more machine readable. A field named "name" as optional would be useful when classes don't have names._
+
+_"title" in other formats like SLD are useful for generating legends and such, but fall into the category of styling and display and probably should be left to styling files which could be linked as assets._
+
+### _Other fields suggested in discussions_
+
+| Field Name           | Type                      | Description |
+| color   | string                    | Color to display this class |
+
+_This is another case of using a metadata field for styling and probably should be discouraged._
+
+
+
+
+
 
 ## Contributing
 
