@@ -46,7 +46,9 @@ _naming the field "classes" seems more descriptive but ??_
 
 
 _Current fields from file:values_
+
 ### Class Object
+
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | values  | [Any] | **REQUIRED** Values in the class |
@@ -63,6 +65,7 @@ _"Summaries" are mentioned elsewhere in the STAC spec (https://github.com/radian
 ### _Common fields used elsewhere_
 
 | Field Name           | Type                      | Description |
+| -------------------- | ------------------------- | ----------- |
 | name   | string                    | Name of the class |
 | description | string                | Description of class |
 | title | string | Like "name" but formatted for display|
@@ -76,6 +79,7 @@ _"title" in other formats like SLD are useful for generating legends and such, b
 ### _Other fields suggested in discussions_
 
 | Field Name           | Type                      | Description |
+| -------------------- | ------------------------- | ----------- |
 | color   | string                    | Color to display this class |
 
 _This is another case of using a metadata field for styling and probably should be discouraged._
