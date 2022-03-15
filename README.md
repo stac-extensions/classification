@@ -12,31 +12,33 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 Classification stores metadata that clarifies the values within a dataset. Common uses would be:
 
 - Examples:
-  - [Asset example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
-- [JSON Schema](json-schema/schema.json)
+  - [Asset example](examples/asset-single-band.json): Shows the basic usage of the extension in a STAC Item
+- [JSON Schema](json-schema/schema.json) (TODO)
 - [Changelog](./CHANGELOG.md)
 
 
+### Classification Types
+
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| classification:distinct   | [Distinct object]        | **REQUIRED**. Classes in the dataset |
+| classification:classed  | Classed object        | **REQUIRED**. Classes in the dataset |
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | classification:bitmask   | [Bitmask object]        | **REQUIRED**. Classes in the dataset |
 
-### Distinct Object
+### Classed Object
+
+_Describes multiple classes_
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | classes | [Value] | **REQUIRED** Classes in the classification |
 | role| string | see https://github.com/radiantearth/stac-spec/pull/989 |
-| description | string                | A short description of the value(s). |
 
 ### Bitmask Object
 
-_This could be combined with the simpler "Distinct" object with the bitmask specific fields optional, but this makes for easier discussion._
+_Describes multiple classes stored in a bit range_
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
@@ -48,12 +50,14 @@ _This could be combined with the simpler "Distinct" object with the bitmask spec
 
 ### Class Object
 
+_Describes data class_
+
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | value   | Any| **REQUIRED** Value of class |
 | description | string                | **REQUIRED** Description of class |
 | name   | string                    | Short name of the class for machine readibility, optional|
-| color-hint | RGB string | suggested color for semantic meaning or to force consistent rendering|
+| color-hint | RGB string or "null" | suggested color for semantic meaning or to force consistent rendering|
 
 
 _`value: any` leaves it open for ranges but hopefully that can be discouraged!_
