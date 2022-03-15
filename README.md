@@ -9,60 +9,54 @@
 
 This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
-Classification stores metadata that clarifies the values within a dataset. Common uses would be:
-
 - Examples:
   - [Asset example](examples/asset-single-band.json): Shows the basic usage of the extension in a STAC Item
 - [JSON Schema](json-schema/schema.json) (TODO)
 - [Changelog](./CHANGELOG.md)
 
+## Classification Types
 
-### Classification Types
+| Field Name              | Type                | Description |
+| ----------------------- | ------------------- | ----------- |
+| classification:classed  | `Classed`           | **REQUIRED**. Classes in the dataset |
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| classification:classed  | Classed object        | **REQUIRED**. Classes in the dataset |
-
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| classification:bitmask   | [Bitmask object]        | **REQUIRED**. Classes in the dataset |
+| Field Name               | Type               | Description |
+| ------------------------ | ------------------ | ----------- |
+| classification:bitmask   | `[Bitmask]`        | **REQUIRED**. Classes in the dataset |
 
 ### Classed Object
 
-_Describes multiple classes_
+*Describes multiple classes*
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| classes | [Value] | **REQUIRED** Classes in the classification |
-| role| string | see https://github.com/radiantearth/stac-spec/pull/989 |
+| Field Name        | Type         | Description |
+| ----------------- | ------------ | ----------- |
+| classes           | `[Value]`    | **REQUIRED** Classes in the classification |
+| role              | `string`     | see [https://github.com/radiantearth/stac-spec/pull/989] |
 
 ### Bitmask Object
 
-_Describes multiple classes stored in a bit range_
+*Describes multiple classes stored in a bit range*
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| bits | [integer] | **REQUIRED** Bits used to generate class values|
-| endianess | 'big'/'little'?? | Byte order (HALP)| 
-| role | string | see https://github.com/radiantearth/stac-spec/pull/989 |
-| classes | [Class] | **REQUIRED** Classes in the classification |
-| description | string                | A short description of the value(s). |
+| Field Name      | Type           | Description |
+| --------------- | -------------- | ----------- |
+| bits            | `[integer]`    | **REQUIRED** Bits used to generate class values |
+| endianess       | `??`           | Byte order (HALP) | 
+| role            | `string`       | see [https://github.com/radiantearth/stac-spec/pull/989] |
+| classes         | `[Class]`      | **REQUIRED** Classes in the classification |
+| description     | `string`       | A short description of the value(s). |
 
 ### Class Object
 
-_Describes data class_
+*Describes data class*
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| value   | Any| **REQUIRED** Value of class |
-| description | string                | **REQUIRED** Description of class |
-| name   | string                    | Short name of the class for machine readibility, optional|
-| color-hint | RGB string or "null" | suggested color for semantic meaning or to force consistent rendering|
-
+| Field Name     | Type                 | Description |
+| -------------- | -------------------- | ----------- |
+| value          | `Any`                | **REQUIRED** Value of class |
+| description    | `string`             | **REQUIRED** Description of class |
+| name           | `string`             | Short name of the class for machine readibility, optional |
+| color-hint     | `RGB string or null` | suggested color for rendering, `null` means do not render |
 
 _`value: any` leaves it open for ranges but hopefully that can be discouraged!_
-
-
 
 ## Contributing
 
