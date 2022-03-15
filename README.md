@@ -5,15 +5,11 @@
 - **Field Name Prefix:** classification
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @drwelby @mmohr
+- **Owner**: @drwelby @mmohr @pjhartzell 
 
 This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 Classification stores metadata that clarifies the values within a dataset. Common uses would be:
-
-- Describing classes of data, and the values belonging to the class
-- The reverse of the above, as a lookup table mapping values to classes
-
 
 - Examples:
   - [Asset example](examples/item.json): Shows the basic usage of the extension in a STAC Item
@@ -21,71 +17,42 @@ Classification stores metadata that clarifies the values within a dataset. Commo
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Asset Properties 
-
-For single-band rasters
-
-## Raster Band (Raster Extension)
-
-For multiband rasters
-
-## Table Column (Table Extension)
-
-For tabular or vector datasets
-
-## Collection Fields
-
-In `summaries` field
-
-
-_naming the field "classes" seems more descriptive but ??_
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| classification:classes   | [Class object]        | **REQUIRED**. Classes in the dataset |
+| classification:distinct   | [Distinct object]        | **REQUIRED**. Classes in the dataset |
 
+| Field Name           | Type                      | Description |
+| -------------------- | ------------------------- | ----------- |
+| classification:bitmask   | [Bitmask object]        | **REQUIRED**. Classes in the dataset |
 
-_Current fields from file:values_
+### Distinct Object
+
+| Field Name           | Type                      | Description |
+| -------------------- | ------------------------- | ----------- |
+| classes | [Value] | **REQUIRED** Classes in the classification |
+| description | string                | A short description of the value(s). |
+
+### Bitmask Object
+
+| Field Name           | Type                      | Description |
+| -------------------- | ------------------------- | ----------- |
+| bits | [integer] | **REQUIRED** Bits used to generate class values|
+| endianess | 'big'/'little'?? | Byte order (HALP)| 
+| classes | [Class] | **REQUIRED** Classes in the classification |
+| description | string                | A short description of the value(s). |
 
 ### Class Object
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| values  | [Any] | **REQUIRED** Values in the class |
-| summary | string                | REQUIRED. A short description of the value(s). |
+| value   | Any| **REQUIRED** Value of class |
+| description | string                | **REQUIRED** Description of class |
+| name   | string                    | Short name of the class for machine readibility, optional|
+| color-hint | RGB string | suggested color for semantic meaning or to force consistent rendering|
 
 
-_"values" is shown as a list of any object. I think that could include Range objects for continuous data_
-
-_@mmohr picked "summary" as distinctive from the "description" field commonly used elsewhere with the expectation that CommonMark would not be used and these descriptions would be short in nature_
-
-_"Summaries" are mentioned elsewhere in the STAC spec (https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md#summaries) to summarize data statistically so maybe "description" is OK_
-
-
-### _Common fields used elsewhere_
-
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| name   | string                    | Name of the class |
-| description | string                | Description of class |
-| title | string | Like "name" but formatted for display|
-
-_"Description" vs "Summary" is addressed above_
-
-_"name" could be useful as a field to identify a class. If classes are mapped to names ((instead of a list)) it would make classes more machine readable. A field named "name" as optional would be useful when classes don't have names._
-
-_"title" in other formats like SLD are useful for generating legends and such, but fall into the category of styling and display and probably should be left to styling files which could be linked as assets._
-
-### _Other fields suggested in discussions_
-
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| color   | string                    | Color to display this class |
-
-_This is another case of using a metadata field for styling and probably should be discouraged._
-
-
-
+_`value: any` leaves it open for ranges but hopefully that can be discouraged!_
 
 
 
