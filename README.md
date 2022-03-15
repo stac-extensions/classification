@@ -30,7 +30,7 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 | Field Name        | Type         | Description |
 | ----------------- | ------------ | ----------- |
-| classes           | `[Value]`    | **REQUIRED** Classes in the classification |
+| classes           | `[Class]`    | **REQUIRED** Classes in the classification |
 | role              | `string`     | see [https://github.com/radiantearth/stac-spec/pull/989] |
 
 ### Bitmask Object
@@ -40,14 +40,13 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 | Field Name      | Type           | Description |
 | --------------- | -------------- | ----------- |
 | bits            | `[integer]`    | **REQUIRED** Bits used to generate class values |
-| endianess       | `??`           | Byte order (HALP) | 
 | role            | `string`       | see [https://github.com/radiantearth/stac-spec/pull/989] |
 | classes         | `[Class]`      | **REQUIRED** Classes in the classification |
 | description     | `string`       | A short description of the value(s). |
 
 ### Class Object
 
-*Describes data class*
+*Describes a data class*
 
 | Field Name     | Type                 | Description |
 | -------------- | -------------------- | ----------- |
