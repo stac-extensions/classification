@@ -31,14 +31,18 @@ Classification stores metadata that clarifies the values within a dataset. Commo
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | classes | [Value] | **REQUIRED** Classes in the classification |
+| role| string | see https://github.com/radiantearth/stac-spec/pull/989 |
 | description | string                | A short description of the value(s). |
 
 ### Bitmask Object
+
+_This could be combined with the simpler "Distinct" object with the bitmask specific fields optional, but this makes for easier discussion._
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | bits | [integer] | **REQUIRED** Bits used to generate class values|
 | endianess | 'big'/'little'?? | Byte order (HALP)| 
+| role | string | see https://github.com/radiantearth/stac-spec/pull/989 |
 | classes | [Class] | **REQUIRED** Classes in the classification |
 | description | string                | A short description of the value(s). |
 
