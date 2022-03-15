@@ -1,0 +1,58 @@
+"qa_pixel": {
+    "href": "LC08_L2SP_047027_20201204_20210313_02_T1_QA_PIXEL.TIF",
+    "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+    "title": "Pixel Quality Assessment Band",
+    "raster:bands": [
+        {
+            "description": "Pixel quality assurance bit mask",
+            "nodata": 1,
+            "data_type": "uint16",
+            "spatial_resolution": 30,
+            "classification:bitmask": [
+                {
+                    "description": "no data",
+                    "role": "nodata-mask",
+                    "bits": [
+                        0
+                    ],
+                    "classes": [
+                        {
+                            "value": 0,
+                            "description": "no data in pixel"
+                        },
+                        {
+                            "value": 1,
+                            "description": "data in pixel"
+                        }
+                    ]
+                },
+                {
+                    "description": "cloud confidence",
+                    "role": "clouds",
+                    "bits": [
+                        8,
+                        9
+                    ],
+                    "classes": [
+                        {
+                            "value": 0,
+                            "description": "no confidence level set"
+                        },
+                        {
+                            "value": 1,
+                            "description": "low confidence"
+                        },
+                        {
+                            "value": 2,
+                            "description": "medium confidence"
+                        },
+                        {
+                            "value": 3,
+                            "description": "high confidence"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
