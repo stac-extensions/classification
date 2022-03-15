@@ -1,53 +1,62 @@
 # Template Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Classification
+- **Identifier:** <https://stac-extensions.github.io/classification/v1.0.0/schema.json>
+- **Field Name Prefix:** classification
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @drwelby @mmohr @pjhartzell 
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
-- [JSON Schema](json-schema/schema.json)
+  - [Asset example](examples/asset-single-band.json): Shows the basic usage of the extension in a STAC Item
+- [JSON Schema](json-schema/schema.json) (TODO)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Classification Types
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
+| Field Name              | Type                | Description |
+| ----------------------- | ------------------- | ----------- |
+| classification:classed  | `Classed`           | **REQUIRED**. Classes in the dataset |
 
-### Additional Field Information
+| Field Name               | Type               | Description |
+| ------------------------ | ------------------ | ----------- |
+| classification:bitmask   | `[Bitmask]`        | **REQUIRED**. Classes in the dataset |
 
-#### template:new_field
+### Classed Object
 
-This is a much more detailed description of the field `template:new_field`...
+*Describes multiple classes*
 
-### XYZ Object
+| Field Name        | Type         | Description |
+| ----------------- | ------------ | ----------- |
+| classes           | `[Value]`    | **REQUIRED** Classes in the classification |
+| role              | `string`     | see [https://github.com/radiantearth/stac-spec/pull/989] |
 
-This is the introduction for the purpose and the content of the XYZ Object...
+### Bitmask Object
 
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
+*Describes multiple classes stored in a bit range*
 
-## Relation types
+| Field Name      | Type           | Description |
+| --------------- | -------------- | ----------- |
+| bits            | `[integer]`    | **REQUIRED** Bits used to generate class values |
+| endianess       | `??`           | Byte order (HALP) | 
+| role            | `string`       | see [https://github.com/radiantearth/stac-spec/pull/989] |
+| classes         | `[Class]`      | **REQUIRED** Classes in the classification |
+| description     | `string`       | A short description of the value(s). |
 
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+### Class Object
 
-| Type                | Description |
-| ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+*Describes data class*
+
+| Field Name     | Type                 | Description |
+| -------------- | -------------------- | ----------- |
+| value          | `Any`                | **REQUIRED** Value of class |
+| description    | `string`             | **REQUIRED** Description of class |
+| name           | `string`             | Short name of the class for machine readibility, optional |
+| color-hint     | `RGB string or null` | suggested color for rendering, `null` means do not render |
+
+_`value: any` leaves it open for ranges but hopefully that can be discouraged!_
 
 ## Contributing
 
