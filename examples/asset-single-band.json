@@ -2,6 +2,7 @@
     "type": "image/tiff; application=geotiff; profile=cloud-optimized",
     "title": "Cloud/Cloud Shadow Coverage Raster",
     "description": "thematic raster, 0 -> no data, 1 -> clear, 2 -> cloud, 3 -> cloud shadow",
+    "role": "cloud, cloud_shadow",
     "href": "./103001000AC5B000-clouds.tif",
     "proj:bbox": [
         619843.75,
@@ -28,34 +29,30 @@
         {
             "name": "BAND_CM",
             "description": "Clouds/Cloud Shadows Mask",
-            "classification:classed": {
-                "role": "cloud, cloud_shadow",
-                "classes": [
-                    {
-                        "value": 0,
-                        "name": "nodata",
-                        "description": "NoData"
-                    },
-                    {
-                        "value": 1,
-                        "name": "clear",
-                        "description": "Clear of clouds or shadows",
-                        "color-hint": null // do not render
-                    },
-                    {
-                        "value": 2,
-                        "name": "cloud",
-                        "description": "Clouds",
-                        "color-hint": "#B8D0EC"
-                    },
-                    {
-                        "value": 3,
-                        "name": "cloud_shadow",
-                        "description": "Cloud shadows",
-                        "color-hint": "9C9EA0"
-                    },
-                ]
-            }
+            "classification:classes": [
+                {
+                    "value": 0,
+                    "name": "nodata",
+                    "description": "NoData"
+                },
+                {
+                    "value": 1,
+                    "name": "clear",
+                    "description": "Clear of clouds or shadows",
+                },
+                {
+                    "value": 2,
+                    "name": "cloud",
+                    "description": "Clouds",
+                    "color-hint": "#B8D0EC"
+                },
+                {
+                    "value": 3,
+                    "name": "cloud_shadow",
+                    "description": "Cloud shadows",
+                    "color-hint": "9C9EA0"
+                },
+            ]
         }
     ]
 }

@@ -18,27 +18,20 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 | Field Name              | Type                | Description |
 | ----------------------- | ------------------- | ----------- |
-| classification:class_list  | `[string]`           | **REQUIRED**. Summary of class names in the dataset |
+| classification:classes  | `[Class]`         | Classes in the dataset (including bands or property fields) |
+| classification:bitmask   | `[Bit_Range]`        | Classes stored in bit ranges in the dataset |
 
-| Field Name              | Type                | Description |
-| ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[Class]`         | **REQUIRED**. Categorized classes in the dataset |
-
-| Field Name               | Type               | Description |
-| ------------------------ | ------------------ | ----------- |
-| classification:bitmask   | `[Bitmask_Part]`        | **REQUIRED**. Classes stored in bit ranges in the dataset |
-
-
-### Bitmask_Part Object
+### Bit_Range Object
 
 *Describes multiple classes stored in a bit range*
 
 | Field Name      | Type           | Description |
 | --------------- | -------------- | ----------- |
 | bits            | `[integer]`    | **REQUIRED** Bits used to generate class values |
-| role            | `string`       | see [https://github.com/radiantearth/stac-spec/pull/989] |
 | classes         | `[Class]`      | **REQUIRED** Classes in the classification |
-| description     | `string`       | A short description of the value(s). |
+| roles           | `[string]`       | see [https://github.com/radiantearth/stac-spec/pull/989] |
+| description     | `string`       | A short description of the classification. |
+| name           | `string`             | Short name of the class for machine readibility, optional |
 
 ### Class Object
 
@@ -49,7 +42,7 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 | value          | `Any`                | **REQUIRED** Value of class |
 | description    | `string`             | **REQUIRED** Description of class |
 | name           | `string`             | Short name of the class for machine readibility, optional |
-| color-hint     | `RGB string or null` | suggested color for rendering, `null` means do not render |
+| color-hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
 
 _`value: any` leaves it open for ranges but hopefully that can be discouraged!_
 
