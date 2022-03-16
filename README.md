@@ -18,26 +18,18 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 | Field Name              | Type                | Description |
 | ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[string]`           | **REQUIRED**. Summary of class names in the dataset, aligns with `label:classes['classes']` |
+| classification:class_list  | `[string]`           | **REQUIRED**. Summary of class names in the dataset |
 
 | Field Name              | Type                | Description |
 | ----------------------- | ------------------- | ----------- |
-| classification:categorical  | `Categorical`           | **REQUIRED**. Categorized classes in the dataset |
+| classification:classes  | `[Class]`         | **REQUIRED**. Categorized classes in the dataset |
 
 | Field Name               | Type               | Description |
 | ------------------------ | ------------------ | ----------- |
-| classification:bitmask   | `[Bitmask]`        | **REQUIRED**. Classes stored in bit ranges in the dataset |
+| classification:bitmask   | `[Bitmask_Part]`        | **REQUIRED**. Classes stored in bit ranges in the dataset |
 
-### Categorical Object
 
-*Describes multiple classes*
-
-| Field Name        | Type         | Description |
-| ----------------- | ------------ | ----------- |
-| classes           | `[Class]`    | **REQUIRED** Classes in the classification |
-| role              | `string`     | see [https://github.com/radiantearth/stac-spec/pull/989] |
-
-### Bitmask Object
+### Bitmask_Part Object
 
 *Describes multiple classes stored in a bit range*
 
