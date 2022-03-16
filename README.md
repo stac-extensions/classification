@@ -18,13 +18,17 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 | Field Name              | Type                | Description |
 | ----------------------- | ------------------- | ----------- |
-| classification:classed  | `Classed`           | **REQUIRED**. Classes in the dataset |
+| classification:classes  | `[string]`           | **REQUIRED**. Summary of class names in the dataset, aligns with `label:classes['classes']` |
+
+| Field Name              | Type                | Description |
+| ----------------------- | ------------------- | ----------- |
+| classification:categorical  | `Categorical`           | **REQUIRED**. Categorized classes in the dataset |
 
 | Field Name               | Type               | Description |
 | ------------------------ | ------------------ | ----------- |
-| classification:bitmask   | `[Bitmask]`        | **REQUIRED**. Classes in the dataset |
+| classification:bitmask   | `[Bitmask]`        | **REQUIRED**. Classes stored in bit ranges in the dataset |
 
-### Classed Object
+### Categorical Object
 
 *Describes multiple classes*
 
