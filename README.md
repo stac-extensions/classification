@@ -5,7 +5,7 @@
 - **Field Name Prefix:** classification
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @drwelby @mmohr @pjhartzell 
+- **Owner**: @drwelby @m-mohr @pjhartzell 
 
 This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
@@ -53,7 +53,7 @@ Please note that the JSON Schema is not able to validate the values of Collectio
 | name           | string | Short name of the class for machine readibility. |
 | description    | string | **REQUIRED** Description of class. [CommonMark 0.29](https://commonmark.org/) syntax MAY be used for rich text representation. |
 | value          | *any*  | **REQUIRED** Value of class. |
-| color_hint     | string | Suggested color for rendering as RGB hex code in upper-case without leading `#`, e.g. `FF0000`. |
+| color_hint     | string | Suggested color for rendering the data. Defined as RGB hex code in upper-case without leading `#`, e.g. `FF0000`. This color defines the point, line, or pixel color, and for polygons defines the fill. |
 
 ## Contributing
 
