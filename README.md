@@ -16,35 +16,33 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 ## Classification Types
 
-| Field Name              | Type                | Description |
-| ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[Class]`         | Classes in the dataset (including bands or property fields) |
-| classification:bitmask   | `[Bit_Range]`        | Classes stored in bit ranges in the dataset |
+| Field Name              | Type               | Description |
+| ----------------------- | ------------------ | ----------- |
+| classification:classes  | \[Class Object]    | Classes in the dataset (including bands or property fields) |
+| classification:bitmask  | \[BitRange Object] | Classes stored in bit ranges in the dataset |
 
-### Bit_Range Object
+### BitRange Object
 
 *Describes multiple classes stored in a bit range*
 
-| Field Name      | Type           | Description |
-| --------------- | -------------- | ----------- |
-| bits            | `[integer]`    | **REQUIRED** Bits used to generate class values |
-| classes         | `[Class]`      | **REQUIRED** Classes in the classification |
-| roles           | `[string]`       | see [https://github.com/radiantearth/stac-spec/pull/989] |
-| description     | `string`       | A short description of the classification. |
-| name           | `string`             | Short name of the class for machine readibility, optional |
+| Field Name      | Type             | Description |
+| --------------- | ---------------- | ----------- |
+| name            | string           | Short name of the class for machine readibility. |
+| description     | string           | A short description of the classification. [CommonMark 0.29](https://commonmark.org/) syntax MAY be used for rich text representation. |
+| bits            | \[integer]       | **REQUIRED** Bits used to generate class values |
+| classes         | \[Class Object]  | **REQUIRED** Classes in the classification |
+| roles           | \[string]        | Roles assigned to this bit range, similar to Item Asset roles. |
 
 ### Class Object
 
 *Describes a data class*
 
-| Field Name     | Type                 | Description |
-| -------------- | -------------------- | ----------- |
-| value          | `Any`                | **REQUIRED** Value of class |
-| description    | `string`             | **REQUIRED** Description of class |
-| name           | `string`             | Short name of the class for machine readibility, optional |
-| color-hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
-
-_`value: any` leaves it open for ranges but hopefully that can be discouraged!_
+| Field Name     | Type   | Description |
+| -------------- | ------ | ----------- |
+| name           | string | Short name of the class for machine readibility. |
+| description    | string | **REQUIRED** Description of class. [CommonMark 0.29](https://commonmark.org/) syntax MAY be used for rich text representation. |
+| value          | *any*  | **REQUIRED** Value of class. |
+| color_hint     | string | Suggested color for rendering as RGB hex code in upper-case without leading `#`, e.g. `FF0000`. |
 
 ## Contributing
 
