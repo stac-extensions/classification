@@ -2,6 +2,12 @@
     "href": "LC08_L2SP_047027_20201204_20210313_02_T1_QA_PIXEL.TIF",
     "type": "image/tiff; application=geotiff; profile=cloud-optimized",
     "title": "Pixel Quality Assessment Band",
+    "roles": [
+        "cloud",
+        "cloud-shadow",
+        "snow-ice",
+        "water-mask"
+    ],
     "raster:bands": [
         {
             "description": "Pixel quality assurance bit mask",
@@ -11,7 +17,9 @@
             "classification:bitmask": [
                 {
                     "description": "no data",
-                    "role": "nodata-mask",
+                    "roles": [
+                        "nodata-mask"
+                    ],
                     "bits": [
                         0
                     ],
@@ -28,7 +36,9 @@
                 },
                 {
                     "description": "cloud confidence",
-                    "role": "clouds",
+                    "roles": [
+                        "clouds"
+                    ],
                     "bits": [
                         8,
                         9
