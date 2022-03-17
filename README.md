@@ -10,7 +10,7 @@
 This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 - Examples:
-  - [Asset example](examples/asset-single-band.json): Shows the basic usage of the extension in a STAC Item
+  - [Asset example](examples/asset-single-band.json): Shows the basic usage of the extension in a STAC Item (TODO)
 - [JSON Schema](json-schema/schema.json) (TODO)
 - [Changelog](./CHANGELOG.md)
 
@@ -20,6 +20,17 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 | ----------------------- | ------------------ | ----------- |
 | classification:classes  | \[Class Object]    | Classes in the dataset (including bands or property fields) |
 | classification:bitmask  | \[BitRange Object] | Classes stored in bit ranges in the dataset |
+
+The following fields are defined for use in Item properties and as an extension
+to the [Raster Band Object](https://github.com/stac-extensions/raster#raster-band-object)
+in [`raster:bands`](https://github.com/stac-extensions/raster#item-asset-fields)
+as defined by the [raster extension](https://github.com/stac-extensions/raster).
+As it's defined for Item properties, STAC implcitly also allows its use in Item Assets, 
+and it can be part of Collections in [Item Asset Definitions](https://github.com/stac-extensions/item-assets)
+and [Summaries](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md#summaries).
+
+If the extension is given in the `stac_extensions` list, at least one of the fields must be specified in any of the given places listed above.
+Please note that the JSON Schema is not able to validate the values of Collection summaries.
 
 ### BitRange Object
 
