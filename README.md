@@ -16,10 +16,10 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 ## Classification Types
 
-| Field Name              | Type               | Description |
-| ----------------------- | ------------------ | ----------- |
-| classification:classes  | \[Class Object]    | Classes in the dataset (including bands or property fields) |
-| classification:bitmask  | \[BitRange Object] | Classes stored in bit ranges in the dataset |
+| Field Name                | Type               | Description |
+| ------------------------- | ------------------ | ----------- |
+| classification:classes    | \[Class Object]    | Classes in the dataset (including bands or property fields) |
+| classification:bitfields  | \[BitField Object] | Classes stored in bit fields in the dataset |
 
 The following fields are defined for use in Item properties and as an extension
 to the [Raster Band Object](https://github.com/stac-extensions/raster#raster-band-object)
@@ -32,17 +32,18 @@ and [Summaries](https://github.com/radiantearth/stac-spec/blob/master/collection
 If the extension is given in the `stac_extensions` list, at least one of the fields must be specified in any of the given places listed above.
 Please note that the JSON Schema is not able to validate the values of Collection summaries.
 
-### BitRange Object
+### BitField Object
 
-*Describes multiple classes stored in a bit range*
+*Describes multiple classes stored in a bit field*
 
 | Field Name      | Type             | Description |
 | --------------- | ---------------- | ----------- |
-| name            | string           | Short name of the class for machine readibility. |
-| description     | string           | A short description of the classification. [CommonMark 0.29](https://commonmark.org/) syntax MAY be used for rich text representation. |
-| bits            | \[integer]       | **REQUIRED** Bits used to generate class values |
-| classes         | \[Class Object]  | **REQUIRED** Classes in the classification |
-| roles           | \[string]        | Roles assigned to this bit range, similar to Item Asset roles. |
+| name            | string           | Short name of the bit field classification for machine readibility. |
+| description     | string           | A short description of the bit field classification. [CommonMark 0.29](https://commonmark.org/) syntax MAY be used for rich text representation. |
+| offset          | integer          | **REQUIRED** Zero-based index of the first bit in the bit field |
+| size            | integer          | **REQUIRED** Number of bits in the bit field |
+| classes         | \[Class Object]  | **REQUIRED** Classes defined by the bit field values |
+| roles           | \[string]        | Roles assigned to this bit field, similar to Item Asset roles. |
 
 ### Class Object
 
