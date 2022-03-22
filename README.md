@@ -27,6 +27,12 @@ An example would be a cloud mask raster that stores integer values that represen
 
 `classification:bitfield` is for classes that are stored in fields of continuous bits within the pixel's value. Files using this strategy are commonly given the name 'bitmask' or 'bit index'. The values stored are the integer representation of the bits in the field when summed as an isolated string. Bits are always read right to left. The position of the first bit in a field is given by its offset. Therefore the first (rightmost) bit is at offset zero.
 
+These classification objects can be used in the following places:
+
+- In an Asset object
+- If the asset has multiple bands and is using `eo:bands` or `raster:bands`, within a Band Object.
+- As a summary field in a Collection object, to indicate that the classification is used across child Items.
+
 ### Bit Field Object
 
 *Describes multiple classes stored in a field of a continuous range of bits*
@@ -41,7 +47,7 @@ An example would be a cloud mask raster that stores integer values that represen
 | name           | `string`             | Short name of the class for machine readibility, optional |
 
 
-A Bit Field stores classes within a range of bits in a data value. The range is described by the offest of the first bit from the rightmost position, and the length of bits used to store the class values.
+A Bit Field stores classes within a range of bits in a data value. The range is described by the offset of the first bit from the rightmost position, and the length of bits used to store the class values.
 
 Since bit fields are often used to store data masks, they can also use optional STAC roles to identify their purpose to clients.
 
@@ -83,7 +89,7 @@ An example of finding the cloud confidence class value from the 4 bit example ab
 The key distinction with bit fields from other types of bitmasks is that the bits in the field are summed as standalone bits. Therefore `01..` cloud confidence class uses the value of 1, not 4 (binary `0100`)
 
 
-For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/media/images/landsat-1-8-collection-1-level-1-quality-bit-designations):
+For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/media/images/landsat-1-8-collection-1-level-1-quality-bit-designations).
 
 
 ### Class Object
