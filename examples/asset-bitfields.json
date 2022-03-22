@@ -14,15 +14,14 @@
             "nodata": 1,
             "data_type": "uint16",
             "spatial_resolution": 30,
-            "classification:bitmask": [
+            "classification:bitfields": [
                 {
                     "description": "no data",
                     "roles": [
                         "nodata-mask"
                     ],
-                    "bits": [
-                        0
-                    ],
+                    "offset": 0,
+                    "length": 1,
                     "classes": [
                         {
                             "value": 0,
@@ -39,10 +38,8 @@
                     "roles": [
                         "clouds"
                     ],
-                    "bits": [
-                        8,
-                        9
-                    ],
+                    "offset": 8,
+                    "length": 2,
                     "classes": [
                         {
                             "value": 0,
