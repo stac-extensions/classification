@@ -4,7 +4,7 @@
 - **Identifier:** <https://stac-extensions.github.io/classification/v1.0.0/schema.json>
 - **Field Name Prefix:** classification
 - **Scope:** Item, Collection
-- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
+- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Pilot
 - **Owner**: @drwelby @mmohr @pjhartzell 
 
 This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
@@ -18,10 +18,10 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 | Field Name              | Type                | Description |
 | ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[Class]`         | Classes stored in dataset or dataset bands) |
-| classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the dataset |
+| classification:classes  | `[Class]`         | Classes stored in raster or bands) |
+| classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the raster |
 
-`classification:classes` is for when one or more unique coded values are present within the raster dataset or band. These coded values translate to classes of data with verbose descriptions.
+`classification:classes` is for when one or more unique coded values are present within a raster asset or band therein. These coded values translate to classes of data with verbose descriptions.
 
 An example would be a cloud mask raster that stores integer values that represent image conditions in each pixel.
 
@@ -29,9 +29,9 @@ An example would be a cloud mask raster that stores integer values that represen
 
 These classification objects can be used in the following places:
 
-- In an Asset object
-- If the asset has multiple bands and is using `eo:bands` or `raster:bands`, within a Band Object.
-- As a summary field in a Collection object, to indicate that the classification is used across child Items.
+- In a raster Asset object if single band.
+- For multiband rasters, use `raster:bands` and store the classes in each Band Object.
+- As an `item-assets` field in a Collection object, to indicate that the classification is used across child Items.
 
 ### Bit Field Object
 
