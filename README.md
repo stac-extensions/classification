@@ -11,9 +11,10 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 
 - Examples:
   - Asset level:
-    - [Asset example](examples/asset-simple.json): STAC Item Asset property on a single band raster
-    - [`raster:bands` example](examples/asset-single-band.json): STAC Item with multiple raster bands (Planet UDM)
-    - [Bitfields example](examples/asset-bitfield.json): STAC Item Asset with bitfields (Landsat) 
+    - [Classes example](examples/item-classes-maxar.json): STAC Item with classified raster bands in asset (Maxar)
+    - [Bitfields example](examples/item-bitfields-landsat.json): STAC Item with bitfields in asset (Landsat) 
+  - Collection level:
+    - [Item Assets example](examples/collection-item-assets.json): STAC Collection using Item Assets for classed child Items
 - [JSON Schema](json-schema/schema.json) (TODO)
 - [Changelog](./CHANGELOG.md)
 
