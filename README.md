@@ -21,17 +21,17 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 | classification:classes  | `[Class]`         | Classes stored in raster or bands) |
 | classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the raster |
 
-`classification:classes` is for when one or more unique coded values are present within a raster asset or band therein. These coded values translate to classes of data with verbose descriptions.
+`classification:classes` is for when one or more unique coded integer values are present within a raster asset or band therein. These coded values translate to classes of data with verbose descriptions.
 
-An example would be a cloud mask raster that stores integer values that represent image conditions in each pixel.
+An example would be a cloud mask raster that stores values that represent image conditions in each pixel.
 
-`classification:bitfield` is for classes that are stored in fields of continuous bits within the pixel's value. Files using this strategy are commonly given the name 'bitmask' or 'bit index'. The values stored are the integer representation of the bits in the field when summed as an isolated string. Bits are always read right to left. The position of the first bit in a field is given by its offset. Therefore the first (rightmost) bit is at offset zero.
+`classification:bitfields` is for classes that are stored in fields of continuous bits within the pixel's value. Files using this strategy are commonly given the name 'bitmask' or 'bit index'. The values stored are the integer representation of the bits in the field when summed as an isolated string. Bits are always read right to left. The position of the first bit in a field is given by its offset. Therefore the first (rightmost) bit is at offset zero.
 
 These classification objects can be used in the following places:
 
 - In a raster Asset object if single band.
-- For multiband rasters, use `raster:bands` and store the classes in each Band Object.
-- As an `item-assets` field in a Collection object, to indicate that the classification is used across child Items.
+- For multiband rasters, use [`raster:bands`](https://github.com/stac-extensions/raster) and store the classes in each Band Object.
+- As an [`item-assets`](https://github.com/stac-extensions/item-assets) field in a Collection object, to indicate that the classification is used across child Items.
 
 ### Bit Field Object
 
@@ -98,7 +98,7 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 
 | Field Name     | Type                 | Description |
 | -------------- | -------------------- | ----------- |
-| value          | `Any`                | **REQUIRED** Value of class |
+| value          | `integer`                | **REQUIRED** Value of class |
 | description    | `string`             | **REQUIRED** Description of class |
 | name           | `string`             | Short name of the class for machine readibility, optional |
 | color-hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
@@ -110,7 +110,7 @@ Class objects enumerate data values and their corresponding classes. A cloud mas
 - 2: "Cloud"
 - 3: "Cloud shadow"
 
-`color-hint` only is intended to *hint* a reasonable color for clients to use and is not intended to convey styling.
+`color-hint` only is intended to *hint* a reasonable color for clients to use and is not intended to define styling.
 
 ## Contributing
 
