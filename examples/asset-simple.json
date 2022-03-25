@@ -1,0 +1,52 @@
+"cloud-mask-raster": {
+    "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+    "title": "Cloud/Cloud Shadow Coverage Raster",
+    "description": "thematic raster, 0 -> no data, 1 -> clear, 2 -> cloud, 3 -> cloud shadow",
+    "role": "cloud, cloud_shadow",
+    "href": "./103001000AC5B000-clouds.tif",
+    "proj:bbox": [
+        619843.75,
+        8889843.75,
+        625156.25,
+        8895156.25
+    ],
+    "proj:shape": [
+        2176,
+        2176
+    ],
+    "proj:transform": [
+        2.44140625,
+        0.0,
+        619843.75,
+        0.0,
+        -2.44140625,
+        8895156.25,
+        0.0,
+        0.0,
+        1.0
+    ],
+    "classification:classes": [
+        {
+            "value": 0,
+            "name": "nodata",
+            "description": "NoData"
+        },
+        {
+            "value": 1,
+            "name": "clear",
+            "description": "Clear of clouds or shadows",
+        },
+        {
+            "value": 2,
+            "name": "cloud",
+            "description": "Clouds",
+            "color-hint": "B8D0EC"
+        },
+        {
+            "value": 3,
+            "name": "cloud_shadow",
+            "description": "Cloud shadows",
+            "color-hint": "9C9EA0"
+        },
+    ]
+}

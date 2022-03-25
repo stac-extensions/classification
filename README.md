@@ -10,7 +10,10 @@
 This document explains the Classification Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 - Examples:
-  - [Asset example](examples/asset-single-band.json): Shows the basic usage of the extension in a STAC Item
+  - Asset level:
+    - [Asset example](examples/asset-simple.json): STAC Item Asset property on a single band raster
+    - [`raster:bands` example](examples/asset-single-band.json): STAC Item with multiple raster bands (Planet UDM)
+    - [Bitfields example](examples/asset-bitfield.json): STAC Item Asset with bitfields (Landsat) 
 - [JSON Schema](json-schema/schema.json) (TODO)
 - [Changelog](./CHANGELOG.md)
 
