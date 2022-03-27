@@ -1,139 +1,223 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/template/v1.0.0/schema.json#",
-  "title": "Template Extension",
-  "description": "STAC Template Extension for STAC Items and STAC Collections.",
-  "oneOf": [
-    {
-      "$comment": "This is the schema for STAC Items. Remove this object if this extension only applies to Collections.",
-      "allOf": [
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://stac-extensions.github.io/classificatioin/v0.0.1/schema.json#",
+    "title": "Classification Extension",
+    "description": "STAC Classification Extension for STAC Items and STAC Collections.",
+    "oneOf": [
         {
-          "type": "object",
-          "required": [
-            "type",
-            "properties",
-            "assets"
-          ],
-          "properties": {
-            "type": {
-              "const": "Feature"
-            },
-            "properties": {
-              "allOf": [
+            "$comment": "This is the schema for STAC Items.",
+            "allOf": [
                 {
-                  "$comment": "Require fields here for item properties.",
-                  "required": [
-                    "template:new_field"
-                  ]
+                    "$ref": "#/definitions/stac_extensions"
                 },
                 {
-                  "$ref": "#/definitions/fields"
+                    "type": "object",
+                    "required": [
+                        "type",
+                        "properties",
+                        "assets"
+                    ],
+                    "properties": {
+                        "type": {
+                            "const": "Feature"
+                        },
+                        "properties": {
+                            "$comment": "This validates the fields in Item Properties, but does not require them.",
+                            "$ref": "#/definitions/fields"
+                        },
+                        "assets": {
+                            "$comment": "This validates the fields in Item Assets (including in Raster Band Objects), but does not require them.",
+                            "type": "object",
+                            "additionalProperties": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/fields"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/raster_bands"
+                                    }
+                                ]
+                            }
+                        }
+                    }
                 }
-              ]
-            },
-            "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
-            }
-          }
+            ]
         },
         {
-          "$ref": "#/definitions/stac_extensions"
+            "$comment": "This is the schema for STAC Collections.",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/stac_extensions"
+                },
+                {
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "const": "Collection"
+                        },
+                        "assets": {
+                            "$comment": "This validates the fields in Collection Assets, but does not require them.",
+                            "type": "object",
+                            "additionalProperties": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/fields"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/raster_bands"
+                                    }
+                                ]
+                            }
+                        },
+                        "item_assets": {
+                            "$comment": "This validates the fields in Item Asset Definitions, but does not require them.",
+                            "type": "object",
+                            "additionalProperties": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/definitions/fields"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/raster_bands"
+                                    }
+                                ]
+                            }
+                        },
+                        "summaries": {
+                            "$comment": "This validates the fields in Summaries, but does not require them.",
+                            "$ref": "#/definitions/fields"
+                        }
+                    }
+                }
+            ]
         }
-      ]
-    },
-    {
-      "$comment": "This is the schema for STAC Collections. Remove this object if this extension does not define top-level fields for Collections AND can't be used in collection assets or item asset defintions.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": [
-            "type"
-          ],
-          "properties": {
-            "type": {
-              "const": "Collection"
-            },
-            "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
-            },
-            "item_assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
-            }
-          }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        },
-        {
-          "$comment": "Remove this object if this extension does not define top-level fields for Collections.",
-          "$ref": "#/definitions/fields"
-        }
-      ]
-    }
-  ],
-  "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": [
-        "stac_extensions"
-      ],
-      "properties": {
+    ],
+    "definitions": {
         "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://stac-extensions.github.io/template/v1.0.0/schema.json"
-          }
-        }
-      }
-    },
-    "fields": {
-      "$comment": "Add your new fields here. Don't require them here, do that above in the item schema.",
-      "type": "object",
-      "properties": {
-        "template:new_field": {
-          "type": "string"
-        },
-        "template:xyz": {
-          "type": "object",
-          "required": [
-            "x",
-            "y",
-            "z"
-          ],
-          "properties": {
-            "x": {
-              "type": "number"
-            },
-            "y": {
-              "type": "number"
-            },
-            "z": {
-              "type": "number"
+            "type": "object",
+            "required": [
+                "stac_extensions"
+            ],
+            "properties": {
+                "stac_extensions": {
+                    "type": "array",
+                    "contains": {
+                        "const": "https://stac-extensions.github.io/classification/v0.0.1/schema.json"
+                    }
+                }
             }
-          }
-        }, 
-        "template:another_one": {
-          "type": "array", 
-          "items": {
-            "type": "number"
-          }
+        },
+        "require_any_field": {
+            "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
+            "anyOf": [
+                {"required": ["classification:bitfields"]},
+                {"required": ["classification:classes"]}
+            ]
+        },
+        "fields": {
+            "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
+            "type": "object",
+            "properties": {
+                "classification:bitfields": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/bit_field_object"
+                    }
+                },
+                "classification:classes": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/class_object"
+                    }
+                }
+            },
+            "patternProperties": {
+                "^(?!classification:)": {}
+            },
+            "additionalProperties": false
+        },
+        "class_object": {
+            "$comment": "Object for storing classes",
+            "type": "object",
+            "required": [
+                "value",
+                "description"
+            ],
+            "properties": {
+                "value": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "color-hint": {
+                    "type": "string",
+                    "pattern": "^([0-9A-F]{6})$"
+                }
+            }
+        },
+        "bit_field_object": {
+            "$comment": "Object for storing bit fields",
+            "type": "object",
+            "required": [
+                "offset",
+                "length",
+                "classes"
+            ],
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "length": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "classes": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/class_object"
+                    }
+                },
+                "roles": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "raster_bands": {
+            "$comment": "Classification fields on the Raster Extension raster:bands object",
+            "type": "object",
+            "properties": {
+                "raster:bands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/fields"
+                    }
+                }
+            }
         }
-      },
-      "patternProperties": {
-        "^(?!template:)": {
-          "$comment": "Above, change `template` to the prefix of this extension"
-        }
-      },
-      "additionalProperties": false
     }
-  }
 }
