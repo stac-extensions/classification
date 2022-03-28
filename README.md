@@ -25,17 +25,23 @@ This document explains the Classification Extension to the [SpatioTemporal Asset
 | classification:classes  | `[Class]`         | Classes stored in raster or bands) |
 | classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the raster |
 
-`classification:classes` is for when one or more unique coded integer values are present within a raster asset or band therein. These coded values translate to classes of data with verbose descriptions.
+`classification:classes` is for when one or more unique coded integer values are present within a raster asset 
+or band therein. These coded values translate to classes of data with verbose descriptions.
 
 An example would be a cloud mask raster that stores values that represent image conditions in each pixel.
 
-`classification:bitfields` is for classes that are stored in fields of continuous bits within the pixel's value. Files using this strategy are commonly given the name 'bitmask' or 'bit index'. The values stored are the integer representation of the bits in the field when summed as an isolated string. Bits are always read right to left. The position of the first bit in a field is given by its offset. Therefore the first (rightmost) bit is at offset zero.
+`classification:bitfields` is for classes that are stored in fields of continuous bits within the pixel's value. 
+Files using this strategy are commonly given the name 'bitmask' or 'bit index'. The values stored are the integer 
+representation of the bits in the field when summed as an isolated string. Bits are always read right to left. The 
+position of the first bit in a field is given by its offset. Therefore the first (rightmost) bit is at offset zero.
 
 These classification objects can be used in the following places:
 
 - In a raster Asset object if single band.
-- For multiband rasters, use [`raster:bands`](https://github.com/stac-extensions/raster) and store the classes in each Band Object.
-- As an [`item-assets`](https://github.com/stac-extensions/item-assets) field in a Collection object, to indicate that the classification is used across child Items.
+- For multiband rasters, use [`raster:bands`](https://github.com/stac-extensions/raster) and store the classes in 
+  each Band Object.
+- As an [`item-assets`](https://github.com/stac-extensions/item-assets) field in a Collection object, to indicate 
+  that the classification is used across child Items.
 
 ### Bit Field Object
 
@@ -50,14 +56,15 @@ These classification objects can be used in the following places:
 | description     | `string`       | A short description of the classification. |
 | name           | `string`             | Short name of the class for machine readibility, optional |
 
+A Bit Field stores classes within a range of bits in a data value. The range is described by the offset of the first 
+bit from the rightmost position, and the length of bits used to store the class values.
 
-A Bit Field stores classes within a range of bits in a data value. The range is described by the offset of the first bit from the rightmost position, and the length of bits used to store the class values.
-
-Since bit fields are often used to store data masks, they can also use optional STAC roles to identify their purpose to clients.
+Since bit fields are often used to store data masks, they can also use optional STAC roles to identify their purpose 
+to clients.
 
 Following is a simplified example a bitfield scheme for cloud data using 4 bits. The bits are broken into 3 bit fields.
 
-```
+```{.txt}
 3210
 ||||
 ...X   - 1 here means "no data", 0 means "valid data"
@@ -86,15 +93,15 @@ An example of finding the cloud confidence class value from the 4 bit example ab
 - Integer 6 is `0110` in binary
 - We want to extract the field at `offset:2, length:2`
 - First, right-shift twice (`0110 >> 2`), which results in `1001`
-- Next, make the bitmask, which is 2 left shifts of `0001` to get `0100` (integer 4), then subtract 1 to get `0011` (integer 3)
+- Next, make the bitmask, which is 2 left shifts of `0001` to get `0100` (integer 4), then subtract 1 to 
+  get `0011` (integer 3)
 - AND these two values together `1001 & 0011` and you get `0001`, or integer 1
 - Therefore at this pixel the cloud confidence field is storing class 1
 
-The key distinction with bit fields from other types of bitmasks is that the bits in the field are summed as standalone bits. Therefore `01..` cloud confidence class uses the value of 1, not 4 (binary `0100`)
-
+The key distinction with bit fields from other types of bitmasks is that the bits in the field are summed 
+as standalone bits. Therefore `01..` cloud confidence class uses the value of 1, not 4 (binary `0100`)
 
 For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/media/images/landsat-1-8-collection-1-level-1-quality-bit-designations).
-
 
 ### Class Object
 
@@ -107,7 +114,8 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 | name           | `string`             | Short name of the class for machine readibility, optional |
 | color-hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
 
-Class objects enumerate data values and their corresponding classes. A cloud mask raster could contain the following four classes:
+Class objects enumerate data values and their corresponding classes. A cloud mask raster could contain the following 
+ four classes:
 
 - 0: "No data"
 - 1: "Clear"
@@ -121,13 +129,15 @@ Class objects enumerate data values and their corresponding classes. A cloud mas
 All contributions are subject to the
 [STAC Specification Code of Conduct](https://github.com/radiantearth/stac-spec/blob/master/CODE_OF_CONDUCT.md).
 For contributions, please follow the
-[STAC specification contributing guide](https://github.com/radiantearth/stac-spec/blob/master/CONTRIBUTING.md) Instructions
-for running tests are copied here for convenience.
+[STAC specification contributing guide](https://github.com/radiantearth/stac-spec/blob/master/CONTRIBUTING.md) 
+Instructions for running tests are copied here for convenience.
 
 ### Running tests
 
-The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
-To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
+The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes 
+are valid. 
+To run tests locally, you'll need `npm`, which is a standard part of any 
+[node.js installation](https://nodejs.org/en/download/).
 
 First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
 your command line run:
