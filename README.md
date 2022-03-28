@@ -50,8 +50,8 @@ These classification objects can be used in the following places:
 
 | Field Name      | Type           | Description |
 | --------------- | -------------- | ----------- |
-| offset          | `[integer]`    | **REQUIRED** Offset to first bit in the field |
-| length          | `[integer]`    | **REQUIRED** Number of bits in the field |
+| offset          | `integer`    | **REQUIRED** Offset to first bit in the field |
+| length          | `integer`    | **REQUIRED** Number of bits in the field |
 | classes         | `[Class]`      | **REQUIRED** Classes represented by the field values |
 | roles           | `[string]`       | see [Asset Roles](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#asset-roles) |
 | description     | `string`       | A short description of the classification. |
