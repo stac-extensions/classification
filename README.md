@@ -23,7 +23,7 @@ This document explains the Classification Extension to the
 
 | Field Name              | Type                | Description |
 | ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[Class]`         | Classes stored in raster or bands) |
+| classification:classes  | `[Class]`         | Classes stored in raster or bands |
 | classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the raster |
 
 `classification:classes` is for when one or more unique coded integer values are present within a raster asset 
