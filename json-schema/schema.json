@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://stac-extensions.github.io/classificatioin/v0.0.1/schema.json#",
+    "$id": "https://stac-extensions.github.io/classification/v1.0.0/schema.json#",
     "title": "Classification Extension",
     "description": "STAC Classification Extension for STAC Items and STAC Collections.",
     "oneOf": [
