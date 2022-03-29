@@ -1,0 +1,220 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/classification/v1.0.0/schema.json"
+  ],
+  "id": "10/120020223032/103001005D31F500",
+  "properties": {
+    "datetime": "2016-10-08 19:25:32Z",
+    "platform": "WV02",
+    "gsd": 0.6,
+    "ard_metadata_version": "0.0.1",
+    "catalog_id": "103001005D31F500",
+    "utm_zone": 10,
+    "quadkey": "120020223032",
+    "view:off_nadir": 29.8,
+    "view:azimuth": 262.5,
+    "view:incidence_angle": 56.2,
+    "view:sun_azimuth": 168.7,
+    "view:sun_elevation": 45.5,
+    "proj:epsg": 32610,
+    "proj:geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            549843.75,
+            4185156.25
+          ],
+          [
+            549843.75,
+            4179843.75
+          ],
+          [
+            555156.25,
+            4179843.75
+          ],
+          [
+            555156.25,
+            4185156.25
+          ],
+          [
+            549843.75,
+            4185156.25
+          ]
+        ]
+      ]
+    },
+    "proj:bbox": [
+      549843.75,
+      4179843.75,
+      555156.25,
+      4185156.25
+    ],
+    "tile:data_area": 28.2,
+    "tile:clouds_area": 0,
+    "tile:clouds_percent": 0
+  },
+  "bbox": [
+    -122.43409303549794,
+    37.76425505192271,
+    -122.37337588954041,
+    37.812440528660765
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -122.43372776643864,
+          37.812440528660765
+        ],
+        [
+          -122.43409303549794,
+          37.76456011499171
+        ],
+        [
+          -122.37378008215768,
+          37.76425505192271
+        ],
+        [
+          -122.37337588954041,
+          37.812134942002146
+        ],
+        [
+          -122.43372776643864,
+          37.812440528660765
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "collection",
+      "href": "../../../acquisition_collections/103001005D31F500_collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../../../acquisition_collections/103001005D31F500_collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "root",
+      "href": "../../../order_collections/5867496013686833273_root_collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "cloud-mask-raster": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Cloud/Cloud Shadow Coverage Raster",
+      "description": "thematic raster, 0 -> no data, 1 -> clear, 2 -> cloud, 3 -> cloud shadow",
+      "href": "./103001005D31F500-clouds.tif",
+      "proj:bbox": [
+        549843.75,
+        4179843.75,
+        555156.25,
+        4185156.25
+      ],
+      "proj:shape": [
+        2176,
+        2176
+      ],
+      "proj:transform": [
+        2.44140625,
+        0,
+        549843.75,
+        0,
+        -2.44140625,
+        4185156.25,
+        0,
+        0,
+        1
+      ],
+      "eo:bands": [
+        {
+          "name": "BAND_CM",
+          "description": "Clouds/Cloud Shadows Mask"
+        }
+      ],
+      "raster:bands": [
+        {
+          "classification:classes": [
+            {
+              "value": 0,
+              "name": "nodata",
+              "description": "NoData"
+            },
+            {
+              "value": 1,
+              "name": "clear",
+              "description": "Clear of clouds or shadows"
+            },
+            {
+              "value": 2,
+              "name": "cloud",
+              "description": "Clouds",
+              "color-hint": "B8D0EC"
+            },
+            {
+              "value": 3,
+              "name": "cloud_shadow",
+              "description": "Cloud shadows",
+              "color-hint": "9C9EA0"
+            }
+          ]
+        }
+      ]
+    },
+    "visual": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Visual (RGB) Image",
+      "href": "./103001005D31F500-visual.tif",
+      "proj:bbox": [
+        549843.75,
+        4179843.75,
+        555156.25,
+        4185156.25
+      ],
+      "proj:shape": [
+        17408,
+        17408
+      ],
+      "proj:transform": [
+        0.30517578125,
+        0,
+        549843.75,
+        0,
+        -0.30517578125,
+        4185156.25,
+        0,
+        0,
+        1
+      ],
+      "eo:bands": [
+        {
+          "name": "BAND_R",
+          "common_name": "red",
+          "description": "Red"
+        },
+        {
+          "name": "BAND_G",
+          "common_name": "green",
+          "description": "Green"
+        },
+        {
+          "name": "BAND_B",
+          "common_name": "blue",
+          "description": "Blue"
+        }
+      ]
+    }
+  },
+  "collection": "103001005D31F500"
+}
