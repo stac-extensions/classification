@@ -16,7 +16,7 @@ This document explains the Classification Extension to the
     - [Bitfields example](examples/item-bitfields-landsat.json): STAC Item with bitfields in asset (Landsat) 
   - Collection level:
     - [Item Assets example](examples/collection-item-assets.json): STAC Collection using Item Assets for classed child Items
-- [JSON Schema](json-schema/schema.json) (TODO)
+- [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
 ## Classification Types
