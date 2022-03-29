@@ -45,12 +45,12 @@
         },
         {
             "$comment": "This is the schema for STAC Collections.",
-            "type": "object",
             "allOf": [
                 {
                     "$ref": "#/definitions/stac_extensions"
                 },
                 {
+                    "type": "object",
                     "required": [
                         "type"
                     ],
@@ -105,7 +105,7 @@
                 "stac_extensions": {
                     "type": "array",
                     "contains": {
-                        "const": "https://stac-extensions.github.io/classification/v0.0.1/schema.json"
+                        "const": "https://stac-extensions.github.io/classification/v1.0.0/schema.json"
                     }
                 }
             }
