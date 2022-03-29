@@ -1216,7 +1216,6 @@
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://landsat.usgs.gov/stac/landsat-extension/v1.1.1/schema.json",
     "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/classification/v0.0.1/schema.json"
-  ],
-  "collection": "landsat-c2-l2"
+    "https://stac-extensions.github.io/classification/v1.0.0/schema.json"
+  ]
 }
