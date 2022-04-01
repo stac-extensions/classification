@@ -1,4 +1,4 @@
-# Template Extension Specification
+# Classification Extension Specification
 
 - **Title:** Classification
 - **Identifier:** <https://stac-extensions.github.io/classification/v1.0.0/schema.json>
