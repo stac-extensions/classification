@@ -123,7 +123,7 @@ Class objects enumerate data values and their corresponding classes. A cloud mas
 - 2: "Cloud"
 - 3: "Cloud shadow"
 
-`color_hint` only is intended to *hint* a reasonable color for clients to use and is not intended to define styling. See https://github.com/stac-extensions/raster/issues/17 and https://github.com/zakjan/cpt2json for discussion on passing styling as an item asset instead.
+`color_hint` only is intended to *hint* a reasonable color for clients to use and is not intended to define styling. See the [Raster Extension](https://github.com/stac-extensions/raster/issues/17) and [cpt2json](https://github.com/zakjan/cpt2json) for discussion on passing styling as an item asset instead.
 
 ## Contributing
 
