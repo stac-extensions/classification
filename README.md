@@ -113,7 +113,7 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 | value          | `integer`                | **REQUIRED** Value of class |
 | description    | `string`             | **REQUIRED** Description of class |
 | name           | `string`             | Short name of the class for machine readibility, optional |
-| color-hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
+| color_hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
 
 Class objects enumerate data values and their corresponding classes. A cloud mask raster could contain the following 
  four classes:
@@ -123,7 +123,7 @@ Class objects enumerate data values and their corresponding classes. A cloud mas
 - 2: "Cloud"
 - 3: "Cloud shadow"
 
-`color-hint` only is intended to *hint* a reasonable color for clients to use and is not intended to define styling.
+`color_hint` only is intended to *hint* a reasonable color for clients to use and is not intended to define styling. See https://github.com/stac-extensions/raster/issues/17 and https://github.com/zakjan/cpt2json for discussion on passing styling as an item asset instead.
 
 ## Contributing
 

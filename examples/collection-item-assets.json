@@ -72,13 +72,13 @@
               "value": 2,
               "name": "cloud",
               "description": "Clouds",
-              "color-hint": "B8D0EC"
+              "color_hint": "B8D0EC"
             },
             {
               "value": 3,
               "name": "cloud_shadow",
               "description": "Cloud shadows",
-              "color-hint": "9C9EA0"
+              "color_hint": "9C9EA0"
             }
           ]
         }

@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0]
+
+### Fixed
+
+Color hinting needed to be underscored `color_hint` to match convention of using snake_case.
+
 ## [1.0.0]
 
 ### Added
@@ -14,3 +20,4 @@ Initial release
 
 [Unreleased]: <https://github.com/stac-extensions/classification/compare/v1.0.0...HEAD>
 [1.0.0]: <https://github.com/stac-extensions/classification/releases/tag/v1.0.0>
+[1.1.0]: <https://github.com/stac-extensions/classification/releases/tag/v1.1.0>

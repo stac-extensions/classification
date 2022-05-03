@@ -113,8 +113,16 @@
         "require_any_field": {
             "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
             "anyOf": [
-                {"required": ["classification:bitfields"]},
-                {"required": ["classification:classes"]}
+                {
+                    "required": [
+                        "classification:bitfields"
+                    ]
+                },
+                {
+                    "required": [
+                        "classification:classes"
+                    ]
+                }
             ]
         },
         "fields": {
@@ -160,7 +168,7 @@
                 "name": {
                     "type": "string"
                 },
-                "color-hint": {
+                "color_hint": {
                     "type": "string",
                     "pattern": "^([0-9A-Fa-f]{6})$"
                 }
