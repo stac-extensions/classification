@@ -1,7 +1,7 @@
 # Classification Extension Specification
 
 - **Title:** Classification
-- **Identifier:** <https://stac-extensions.github.io/classification/v1.0.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/classification/v1.1.0/schema.json>
 - **Field Name Prefix:** classification
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Pilot
