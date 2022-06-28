@@ -6,11 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Allow CommonMark for the `description` fields.
+
 ## [1.1.0]
 
 ### Fixed
 
-Color hinting needed to be underscored `color_hint` to match convention of using snake_case.
+- Color hinting needed to be underscored `color_hint` to match convention of using snake_case.
 
 ## [1.0.0]
 
