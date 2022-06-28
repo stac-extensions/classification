@@ -50,12 +50,12 @@ These classification objects can be used in the following places:
 
 | Field Name      | Type           | Description |
 | --------------- | -------------- | ----------- |
-| offset          | `integer`    | **REQUIRED** Offset to first bit in the field |
-| length          | `integer`    | **REQUIRED** Number of bits in the field |
-| classes         | `[Class]`      | **REQUIRED** Classes represented by the field values |
+| offset          | `integer`    | **REQUIRED.** Offset to first bit in the field |
+| length          | `integer`    | **REQUIRED.** Number of bits in the field |
+| classes         | `[Class]`      | **REQUIRED.** Classes represented by the field values |
 | roles           | `[string]`       | see [Asset Roles](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#asset-roles) |
 | description     | `string`       | A short description of the classification. |
-| name           | `string`             | Short name of the class for machine readibility, optional |
+| name           | `string`             | Short name of the class for machine readibility |
 
 A Bit Field stores classes within a range of bits in a data value. The range is described by the offset of the first 
 bit from the rightmost position, and the length of bits used to store the class values.
@@ -110,9 +110,9 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 
 | Field Name     | Type                 | Description |
 | -------------- | -------------------- | ----------- |
-| value          | `integer`                | **REQUIRED** Value of class |
-| description    | `string`             | **REQUIRED** Description of class |
-| name           | `string`             | Short name of the class for machine readibility, optional |
+| value          | `integer`                | **REQUIRED.** Value of class |
+| description    | `string`             | **REQUIRED.** Description of class |
+| name           | `string`             | Short name of the class for machine readibility |
 | color_hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
 
 Class objects enumerate data values and their corresponding classes. A cloud mask raster could contain the following 
