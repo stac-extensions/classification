@@ -54,7 +54,7 @@ These classification objects can be used in the following places:
 | length          | `integer`    | **REQUIRED.** Number of bits in the field |
 | classes         | `[Class]`      | **REQUIRED.** Classes represented by the field values |
 | roles           | `[string]`       | see [Asset Roles](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#asset-roles) |
-| description     | `string`       | A short description of the classification. |
+| description     | `string`       | A short description of the classification. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
 | name           | `string`             | Short name of the class for machine readibility |
 
 A Bit Field stores classes within a range of bits in a data value. The range is described by the offset of the first 
@@ -110,8 +110,8 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 
 | Field Name     | Type                 | Description |
 | -------------- | -------------------- | ----------- |
-| value          | `integer`                | **REQUIRED.** Value of class |
-| description    | `string`             | **REQUIRED.** Description of class |
+| value          | `integer`                | **REQUIRED.** Value of the class |
+| description    | `string`             | **REQUIRED.** Description of the class. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
 | name           | `string`             | Short name of the class for machine readibility |
 | color_hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
 
