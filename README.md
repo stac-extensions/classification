@@ -110,13 +110,14 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 
 | Field Name     | Type                 | Description |
 | -------------- | -------------------- | ----------- |
-| value          | `integer`                | **REQUIRED.** Value of the class |
-| description    | `string`             | **REQUIRED.** Description of the class. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
-| name           | `string`             | Short name of the class for machine readibility |
+| value          | `integer`    | **REQUIRED.** Value of the class |
+| description    | `string`     | **REQUIRED.** Description of the class. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
+| name           | `string`     | Short name of the class for machine readibility |
 | color_hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
+| nodata         | `boolean`    | If set to `true `classifies a value as a no-data value, defaults to `false` |
 
-Class objects enumerate data values and their corresponding classes. A cloud mask raster could contain the following 
- four classes:
+Class objects enumerate data values and their corresponding classes.
+A cloud mask raster could contain the following four classes:
 
 - 0: "No data"
 - 1: "Clear"
