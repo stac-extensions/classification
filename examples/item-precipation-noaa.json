@@ -1,0 +1,113 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://raw.githubusercontent.com/stactools-packages/noaa-mrms-qpe/main/extension/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/classification/v1.1.0/schema.json"
+  ],
+  "id": "CONUS_MRMS_MultiSensor_QPE_24H_Pass2_00.00_20220530-120000",
+  "type": "Feature",
+  "properties": {
+    "noaa_mrms_qpe:pass": 2,
+    "noaa_mrms_qpe:period": 24,
+    "description": "Multi-sensor accumulation 24-hour (2-hour latency) [mm]",
+    "datetime": "2022-05-30T12:00:00Z"
+  },
+  "assets": {
+    "cog": {
+      "href": "MRMS_MultiSensor_QPE_24H_Pass2_00.00_20220530-120000.tif",
+      "roles": [
+        "data",
+        "cloud-optimized"
+      ],
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "raster:bands": [
+        {
+          "spatial_resolution": 1000,
+          "unit": "mm",
+          "nodata": -3,
+          "data_type": "float64",
+          "statistics": {
+            "minimum": 0
+          },
+          "classification:incomplete": true,
+          "classification:classes": [
+            {
+              "value": -3,
+              "name": "no-data",
+              "description": "No coverage or missing value (no-data)",
+              "nodata": true
+            }
+          ]
+        }
+      ]
+    },
+    "grib2": {
+      "href": "MRMS_MultiSensor_QPE_24H_Pass2_00.00_20220530-120000.grib2",
+      "roles": [
+        "data",
+        "source"
+      ],
+      "type": "application/wmo-GRIB2",
+      "raster:bands": [
+        {
+          "spatial_resolution": 1000,
+          "unit": "mm",
+          "data_type": "float64",
+          "statistics": {
+            "minimum": 0
+          },
+          "classification:incomplete": true,
+          "classification:classes": [
+            {
+              "value": -1,
+              "name": "missing-value",
+              "description": "Missing value (no-data)",
+              "nodata": true
+            },
+            {
+              "value": -3,
+              "name": "no-coverage",
+              "description": "No coverage (no-data)",
+              "nodata": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -130.5,
+          55.5
+        ],
+        [
+          -60.5,
+          55.5
+        ],
+        [
+          -60.5,
+          20.5
+        ],
+        [
+          -130.5,
+          20.5
+        ],
+        [
+          -130.5,
+          55.5
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -130.5,
+    20.5,
+    -60.5,
+    55.5
+  ],
+  "links": []
+}

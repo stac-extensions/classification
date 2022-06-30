@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added 
+
+- `nodata` to `classification:classes`
+- `classification:incomplete`
+
 ### Changed
 
 - Allow CommonMark for the `description` fields.

@@ -61,7 +61,8 @@
             {
               "value": 0,
               "name": "nodata",
-              "description": "NoData"
+              "description": "NoData",
+              "nodata": true
             },
             {
               "value": 1,
