@@ -129,6 +129,10 @@
             "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
             "type": "object",
             "properties": {
+                "classification:incomplete": {
+                    "type": "boolean",
+                    "default": false
+                },
                 "classification:bitfields": {
                     "type": "array",
                     "uniqueItems": true,

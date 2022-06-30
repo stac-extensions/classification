@@ -12,8 +12,10 @@ This document explains the Classification Extension to the
 
 - Examples:
   - Asset level:
-    - [Classes example](examples/item-classes-maxar.json): STAC Item with classified raster bands in asset (Maxar)
-    - [Bitfields example](examples/item-bitfields-landsat.json): STAC Item with bitfields in asset (Landsat) 
+    - [Classes example](examples/item-classes-maxar.json): STAC Item with classified raster bands in an asset (Maxar)
+    - [Bitfields example](examples/item-bitfields-landsat.json): STAC Item with bitfields in an asset (Landsat)
+    - [Incomplete classes example](examples/item-bitfields-landsat.json):
+      STAC Item with classified no-data values and continuous data in an asset (NOAA)
   - Collection level:
     - [Item Assets example](examples/collection-item-assets.json): STAC Collection using Item Assets for classed child Items
 - [JSON Schema](json-schema/schema.json)
@@ -21,10 +23,18 @@ This document explains the Classification Extension to the
 
 ## Classification Types
 
-| Field Name              | Type                | Description |
-| ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[Class]`         | Classes stored in raster or bands |
-| classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the raster |
+| Field Name                | Type          | Description |
+| ------------------------- | ------------- | ----------- |
+| classification:classes    | `[Class]`     | Classes stored in raster or bands |
+| classification:bitfields  | `[Bit Field]` | Classes stored in bit fields in the raster |
+| classification:incomplete | `boolean`     | Defines that the list of classes is incomplete. Defaults to `false` |
+
+At least one of the fields `classification:classes` and `classification:bitfields` is REQUIRED.
+
+`classification:incomplete` specifies that the dataset uses classes but isn't fully classified.
+An example is where you have multiple no-data values (e.g. -1, -2 and -3) and continuous valid values (e.g. >= 0).
+It is recommended to use the field `statistics` (and `data_type`) in the
+[raster extension](https://github.com/stac-extensions/raster) to describe the (potential) range of valid values.
 
 `classification:classes` is for when one or more unique coded integer values are present within a raster asset 
 or band therein. These coded values translate to classes of data with verbose descriptions.
