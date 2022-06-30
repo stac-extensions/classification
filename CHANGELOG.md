@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Allow CommonMark for the `description` fields.
 
+### Fixed
+
+- Fixed tests which were validating against v1.0.0 instead of v1.1.0
+
 ## [1.1.0]
 
 ### Fixed
