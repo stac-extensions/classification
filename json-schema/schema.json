@@ -156,7 +156,7 @@
             "type": "object",
             "required": [
                 "value",
-                "description"
+                "name"
             ],
             "properties": {
                 "value": {
