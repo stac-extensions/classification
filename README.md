@@ -4,8 +4,8 @@
 - **Identifier:** <https://stac-extensions.github.io/classification/v1.1.0/schema.json>
 - **Field Name Prefix:** classification
 - **Scope:** Item, Collection
-- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Pilot
-- **Owner**: @drwelby @mmohr @pjhartzell 
+- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
+- **Owner**: @drwelby @m-mohr @pjhartzell 
 
 This document explains the Classification Extension to the 
 [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
@@ -21,10 +21,10 @@ This document explains the Classification Extension to the
 
 ## Classification Types
 
-| Field Name              | Type                | Description |
-| ----------------------- | ------------------- | ----------- |
-| classification:classes  | `[Class]`         | Classes stored in raster or bands |
-| classification:bitfields   | `[Bit Field]`        | Classes stored in bit fields in the raster |
+| Field Name               | Type              | Description |
+| ------------------------ | ----------------- | ----------- |
+| classification:classes   | `[Class]`         | Classes stored in raster or bands |
+| classification:bitfields | `[Bit Field]`     | Classes stored in bit fields in the raster |
 
 `classification:classes` is for when one or more unique coded integer values are present within a raster asset 
 or band therein. These coded values translate to classes of data with verbose descriptions.
@@ -48,14 +48,14 @@ These classification objects can be used in the following places:
 
 *Describes multiple classes stored in a field of a continuous range of bits*
 
-| Field Name      | Type           | Description |
-| --------------- | -------------- | ----------- |
+| Field Name      | Type         | Description |
+| --------------- | ------------ | ----------- |
 | offset          | `integer`    | **REQUIRED.** Offset to first bit in the field |
 | length          | `integer`    | **REQUIRED.** Number of bits in the field |
-| classes         | `[Class]`      | **REQUIRED.** Classes represented by the field values |
-| roles           | `[string]`       | see [Asset Roles](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#asset-roles) |
-| description     | `string`       | A short description of the classification. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
-| name           | `string`             | Short name of the class for machine readibility |
+| classes         | `[Class]`    | **REQUIRED.** Classes represented by the field values |
+| roles           | `[string]`   | see [Asset Roles](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#asset-roles) |
+| description     | `string`     | A short description of the classification. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
+| name           | `string`      | Short name of the class for machine readibility |
 
 A Bit Field stores classes within a range of bits in a data value. The range is described by the offset of the first 
 bit from the rightmost position, and the length of bits used to store the class values.
@@ -108,12 +108,12 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 
 *Describes a data class*
 
-| Field Name     | Type                 | Description |
-| -------------- | -------------------- | ----------- |
+| Field Name     | Type         | Description |
+| -------------- | ------------ | ----------- |
 | value          | `integer`    | **REQUIRED.** Value of the class |
 | description    | `string`     | Description of the class. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
 | name           | `string`     | **REQUIRED.** Short name of the class for machine readibility |
-| color_hint     | `RGB string` | suggested color for rendering (Hex RGB code in upper-case without leading #) |
+| color_hint     | RGB string   | suggested color for rendering (Hex RGB code in upper-case without leading #) |
 | nodata         | `boolean`    | If set to `true` classifies a value as a no-data value, defaults to `false` |
 
 Class objects enumerate data values and their corresponding classes.
