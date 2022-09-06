@@ -112,7 +112,8 @@ For a real world example, see [Landsat 8's Quality raster](https://www.usgs.gov/
 | ----------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | value       | `integer`  | **REQUIRED.** Value of the class                                                                                     |
 | description | `string`   | Description of the class. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
-| name        | `string`   | **REQUIRED.** Short name of the class for machine readability                                                        |
+| name        | `string`   | **REQUIRED.** Short name of the class for machine readability. Must consist only of letters, numbers, `-`, and `_` characters.                                                        |
+| title  | `string` | Human-readable name for use in, e.g., a map legend. |
 | color_hint  | RGB string | suggested color for rendering (Hex RGB code in upper-case without leading #)                                         |
 | nodata      | `boolean`  | If set to `true` classifies a value as a no-data value, defaults to `false`                                          |
 
