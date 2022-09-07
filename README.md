@@ -19,6 +19,9 @@ This document explains the Classification Extension to the
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
+Note that Classification in this context is about providing semantic information on the pixel content. It does not
+relate in any way to security classification or other confidentiality labeling.
+
 ## Classification Types
 
 | Field Name               | Type          | Description                                |
