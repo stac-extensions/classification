@@ -166,6 +166,10 @@
                     "type": "string"
                 },
                 "name": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Za-z-_]+$"
+                },
+                "title": {
                     "type": "string"
                 },
                 "color_hint": {
