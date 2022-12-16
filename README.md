@@ -4,7 +4,7 @@
 - **Identifier:** <https://stac-extensions.github.io/classification/v1.1.0/schema.json>
 - **Field Name Prefix:** classification
 - **Scope:** Item, Collection
-- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
+- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Pilot
 - **Owner**: @drwelby @m-mohr @pjhartzell
 
 This document explains the Classification Extension to the
